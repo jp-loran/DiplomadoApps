@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PracticaFinal</string>
+    <string name="login">Login</string>
+    <string name="tv_name">Enter your name</string>
+    <string name="name_hint">John</string>
+    <string name="tv_last_name">Enter your last name</string>
+    <string name="last_name_hint">Deer</string>
+    <string name="tv_email">Enter email</string>
+    <string name="email_hint">john@gmail.com</string>
+    <string name="tv_password">Enter your password</string>
+    <string name="password_hint">Enter password</string>
+    <string name="tv_genre">Select your genre</string>
+    <string name="rb_male">Male</string>
+    <string name="rb_female">Female</string>
+    <string name="btn_register">Register</string>
+    <string name="tv_summary">Summary</string>
+    <string name="toast_fields">Empty fields detected</string>
+</resources>
