@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">P1-M6</string>
+    <string name="action_settings">Settings</string>
+    <string name="tv_title">Marca del auto</string>
+    <string name="tv_model">Modelo</string>
+    <string name="tv_hp">HP</string>
+    <string name="tv_price">Precio</string>
+
+    <string name="brand_hint">Marca</string>
+    <string name="model_hint">Modelo</string>
+    <string name="hp_hint">HP</string>
+    <string name="price_hint">Precio</string>
+    <string name="autos_registrados">Autos registrados</string>
+    <string name="update_success">Auto actualizado exitosamente</string>
+    <string name="update_error">Error al actualizar</string>
+    <string name="delete_error">Error al eliminar</string>
+    <string name="insert_success">Auto guardado exitosamente</string>
+    <string name="insert_error">Error al guardar auto</string>
+    <string name="cancel_btn">Cancelar</string>
+    <string name="update_btn">Actualizar</string>
+    <string name="delete_btn">Borrar</string>
+    <string name="save_btn">Guardar</string>
+    <string name="accept_btn">Aceptar</string>
+    <string name="confirm_txt">Confirmación</string>
+    <string name="delete_success">Auto eliminado exitosamente</string>
+
+    <string-array name="brands">
+        <item>BMW</item>
+        <item>Audi</item>
+        <item>Mercedes</item>
+    </string-array>
+</resources>
