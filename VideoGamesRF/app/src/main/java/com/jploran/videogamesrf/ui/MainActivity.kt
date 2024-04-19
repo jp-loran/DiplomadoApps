@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-   //     retrofit = RetrofitHelper().getRetrofit()
-    //    repository = GameRepository(retrofit)
+        retrofit = RetrofitHelper().getRetrofit()
+        repository = GameRepository(retrofit)
 
-      /*  lifecycleScope.launch {
+        lifecycleScope.launch {
             val call: Call<List<GameDto>> = repository.getGames("cm/games/games_list.php")
             call.enqueue(object: Callback<List<GameDto>>{
                 override fun onResponse(p0: Call<List<GameDto>>, response: Response<List<GameDto>>) {
@@ -42,6 +42,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
-        }*/
+        }
     }
 }
