@@ -26,4 +26,8 @@ data class CarDetailDto(
 
     @SerializedName("year")
     var year: String?=null,
+
+
+    @SerializedName("video")
+    var video: String?=null,
 )

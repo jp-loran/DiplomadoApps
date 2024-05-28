@@ -1,11 +1,13 @@
 package com.jploran.p2_m6.ui.fragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.jploran.p2_m6.R
@@ -68,6 +70,20 @@ class CarDetailFragment : Fragment() {
                             Glide.with(requireActivity())
                                 .load(p1.body()?.image)
                                 .into(ivImage)
+
+                            val videoUrl = p1.body()?.video
+                            if (!videoUrl.isNullOrEmpty()) {
+                                vvCarVideo.setVideoURI(Uri.parse(videoUrl))
+                                val mc = MediaController(requireContext())
+                                mc.setAnchorView(vvCarVideo)
+                                vvCarVideo.setMediaController(mc)
+                                vvCarVideo.start()
+                            } else {
+                                vvCarVideo.visibility = View.INVISIBLE
+                                Log.d(Constants.LOGTAG, "No video URL provided")
+                            }
+
+
                         }
                     }
 

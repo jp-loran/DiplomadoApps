@@ -1,5 +1,6 @@
 package com.jploran.p2_m6.ui.fragments
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -26,9 +27,11 @@ class CarListFragment : Fragment() {
     private var _binding: FragmentCarListBinding? = null
     private val binding get() = _binding!!
     private lateinit var repository: CarRepository
+    private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.car_sound)
     }
 
     override fun onCreateView(
@@ -42,6 +45,7 @@ class CarListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        mediaPlayer.release()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,6 +63,18 @@ class CarListFragment : Fragment() {
                         binding.rvGames.apply {
                             layoutManager = LinearLayoutManager(requireContext())
                             adapter = CarAdapter(cars){ car ->
+
+                                try {
+                                    if (mediaPlayer.isPlaying) {
+                                        mediaPlayer.stop()
+                                        mediaPlayer.prepare()
+                                    }
+                                    Log.d(Constants.LOGTAG, "Starting media player")
+                                    mediaPlayer.start()
+                                } catch (e: Exception) {
+                                    Log.e(Constants.LOGTAG, "Error playing sound: ${e.message}")
+                                }
+
                                 requireActivity().supportFragmentManager.beginTransaction()
                                     .replace(R.id.fragment_container, CarDetailFragment.newInstance(car.id.toString()))
                                     .addToBackStack(null)
