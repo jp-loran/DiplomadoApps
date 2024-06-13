@@ -2,4 +2,12 @@
     <string name="app_name">P2-M6</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logoutBtn">Cerrar sesión</string>
+    <string name="loginText">CarFinder</string>
+    <string name="emailHint">Correo electrónico</string>
+    <string name="passwordHint">Contraseña</string>
+    <string name="loginBtnText">Ingresar</string>
+    <string name="registerBtnText">Registrarse</string>
+    <string name="forgotPassword">Olvidé mi contraseña</string>
+    <string name="carStore">Concesionaria</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.jploran.p2_m6.ui.fragments
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
@@ -10,11 +11,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.jploran.p2_m6.R
 import com.jploran.p2_m6.application.CarRFApp
 import com.jploran.p2_m6.data.CarRepository
 import com.jploran.p2_m6.data.remote.model.CarDto
 import com.jploran.p2_m6.databinding.FragmentCarListBinding
+import com.jploran.p2_m6.ui.AuthActivity
 import com.jploran.p2_m6.ui.adapters.CarAdapter
 import com.jploran.p2_m6.utils.Constants
 import kotlinx.coroutines.launch
@@ -28,10 +32,16 @@ class CarListFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var repository: CarRepository
     private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var firebaseAuth: FirebaseAuth
+    private var user: FirebaseUser? = null
+    private var userId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mediaPlayer = MediaPlayer.create(requireContext(), R.raw.car_sound)
+        firebaseAuth = FirebaseAuth.getInstance()
+        user = firebaseAuth?.currentUser
+        userId = user?.uid
     }
 
     override fun onCreateView(
@@ -51,6 +61,13 @@ class CarListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         repository = (requireActivity().application as CarRFApp).repository
+
+        binding.btnLogout.setOnClickListener {
+            firebaseAuth.signOut()
+            val intent = Intent(requireActivity(), AuthActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
 
         lifecycleScope.launch {
             val call: Call<List<CarDto>> = repository.getCars("cars")
